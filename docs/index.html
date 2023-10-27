@@ -15,7 +15,11 @@
       name: '',
       loadSidebar: true,
       subMaxLevel: 2,
-      repo: ''
+      repo: '',
+      latex: {
+        inlineMath   : [['$', '$'], ['\\(', '\\)']], // default
+        displayMath  : [['$$', '$$']],               // default
+      }
 
     }
   </script>
@@ -24,5 +28,7 @@
   <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-haskell.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-python.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-latex@0"></script>
 </body>
 </html>
