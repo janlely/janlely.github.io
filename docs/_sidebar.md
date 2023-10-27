@@ -1,9 +1,9 @@
-  - Haskell
-    - [Haskell类型编程的优势](/Haskell/Haskell类型编程的优势.md)
-    - [Thinking With Types](/Haskell/Thinking%20With%20Types.md)
-  - Linux
-    - [iptables打通两个局域网](/Linux/iptables打通两个局域网.md)
-  - 大数据
-    - [OLTP vs OLAP](/大数据/OLTP%20vs%20OLAP.md)
-    - [Row based vs Column based](/大数据/Row-based%20vs%20Column-based.md)
-    - [各种数据库](/大数据/各种数据库.md)
+- Haskell
+  - [Haskell类型编程的优势](/Haskell/Haskell类型编程的优势.md)
+  - [Thinking With Types](/Haskell/Thinking%20With%20Types.md)
+- Linux
+  - [iptables打通两个局域网](/Linux/iptables打通两个局域网.md)
+- 大数据
+  - [OLTP vs OLAP](/大数据/OLTP%20vs%20OLAP.md)
+  - [Row based vs Column based](/大数据/Row-based%20vs%20Column-based.md)
+  - [各种数据库](/大数据/各种数据库.md)

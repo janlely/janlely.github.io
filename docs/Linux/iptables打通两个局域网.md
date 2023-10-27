@@ -2,7 +2,7 @@
 - 首先，在A上添加一条路由规则，将所有到172.17.1.0/24的流量的网关设置成B  
 - 然后在B上开启ip转发，并添加几条iptables规则  
 
-```shell
+```bash
 #在 /etc/sysctl.conf中添加net.ipv4.ip_forward = 1
 sysctl -p
 
