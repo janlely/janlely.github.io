@@ -134,10 +134,15 @@ class Functor f where
 
 对于类型T a是Covariant还是Contravariant，取决与a出现在正位置(positive position)还是负位置(negative position)。所有的类型都可以用**canonical representation**来表，对于三种基本的类型构造方式Either, (,)和(->)来说，它们的正负性分别是
 
+<div style="display: flex; justify-content: center;">
+
 |Type|a|b|
 |--|--|--|
 |Either a, b|+|+|
 |(a,b)|+|+|
 |(a->b)|-|+|
+
+</div>
+
 
 对于复杂类型则遵循**负负得正**的原则，例如(a,Bool) -> Int中的a就是负的。因为(->)左边是负，(a, Bool)中的a是正。
