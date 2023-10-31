@@ -4,6 +4,8 @@
       - [01The Algebra Behind Types](/Haskell/Thinking%20With%20Types/01The%20Algebra%20Behind%20Types.md)
       - [02Terms, Types and Kinds](/Haskell/Thinking%20With%20Types/02Terms,%20Types%20and%20Kinds.md)
       - [03Variance](/Haskell/Thinking%20With%20Types/03Variance.md)
+      - [04Working with Types](/Haskell/Thinking%20With%20Types/04Working%20with%20Types.md)
+      - [05Constraints and GADTs](/Haskell/Thinking%20With%20Types/05Constraints%20and%20GADTs.md)
   - Linux
     - [iptables打通两个局域网](/Linux/iptables打通两个局域网.md)
   - 大数据

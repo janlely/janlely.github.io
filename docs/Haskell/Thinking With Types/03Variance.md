@@ -1,4 +1,4 @@
-## Variance
+## Variance(协变性)
 
 如果可以把a转换成b，那是否可以把T a转换成T b呢？T需要满足什么条件呢?
 ```haskell
@@ -17,9 +17,21 @@ newtype T5 a = T5 ((a -> Int) -> Int)
 - T5 a表示一函数f5 :: ((a -> Int) -> Int)，通过T5 a再加一个f :: (a -> b)，可以得到T5 b。T5 a接收一个(a -> Int)的函数，它知道如何应用这个函数，最后返回一个Int，T5 b接收一个(b -> Int)的函数，它知道如何应用这个函数，但是它只知道给这个函数传入a类型的参数，所以通过f先把a转成b，再应用这个函数就可以了。
 
 **不同的类型构造子T，存在三种不同的variance:** 
-- Covariant:  任意(a -> b)的函数，可以提升为(T a -> T b)的函数  
-- Contravariant：任意(a -> b)的函数，可以提升为(T b -> T a)的函数  
-- Invariant:  
+- Covariant(协变):  任意(a -> b)的函数，可以提升为(T a -> T b)的函数  
+    ```haskell
+    class Convariant f where
+      map :: (a -> b) -> f a -> f b
+    ```
+- Contravariant(逆变)：任意(a -> b)的函数，可以提升为(T b -> T a)的函数  
+    ```haskell
+    class Contravariant f where
+      contramap :: (a -> b) -> f b -> f a
+    ```
+- Invariant(不变):  
+    ```haskell
+    class Invariant f where
+      invmap :: (a -> b) -> (b -> a) -> f a -> f b
+    ```
 
 Covariant就是我们熟知的Functor，Functor的本质就是lift
 ```haskell
