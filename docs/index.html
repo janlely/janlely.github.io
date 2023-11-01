@@ -22,6 +22,26 @@
         inlineMath   : [['$', '$'], ['\\(', '\\)']], // default
         displayMath  : [['$$', '$$']],               // default
       },
+      search: {
+      maxAge: 86400000, // Expiration time, the default one day
+      paths: 'auto', // or 'auto'
+      // Localization
+      placeholder: {
+        '/zh-cn/': '搜索',
+        '/': 'Type to search'
+      },
+
+      // Localization
+      noData: {
+        '/zh-cn/': '找不到结果',
+        '/': 'No Results'
+      },
+
+      // Headline depth, 1 - 6
+      depth: 2,
+
+      hideOtherSidebarContent: false, // whether or not to hide other sidebar content
+    }
       // markdown: {
       //   smartypants: true,
         // renderer: {
@@ -40,5 +60,6 @@
   <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-python.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify-latex@0"></script>
+  <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
 </body>
 </html>
