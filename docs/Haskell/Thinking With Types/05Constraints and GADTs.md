@@ -107,6 +107,9 @@ ghci> :t 1 :# Just 2 :# HNil
                               else "[" <> show x <> "," <> drop 1 rt 
 
     ```
+
+    
+
 值得注意的是，HList与List有一个重要区别：在List里面[]、[1,2,3]、[4,5]都是[Int]类型，与长度无关；但是在HList中，[]、[True,Just 1]、[1,Maybe 2]的类型都不一样，HList的类型中包含了所有元素的类型，所以在实现Eq和Ord的时候需要写两条instance语句。由于[]和[True]属于不同的类型，所以不能执行(==)函数，下面的代码将无法编译:
 ```
 ghci> HNil == (True :# HNil)
