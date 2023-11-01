@@ -40,6 +40,33 @@ class Functor f where
   --fmap :: (a -> b) -> (f a -> f b)
   fmap :: (a -> b) -> f a -> f b
 ```
+Contravariant有一些特别，在Data.Functor.Contravariant中我们可以看到:
+```haskell
+ghci> import Data.Functor.Contravariant
+ghci> :info Contravariant
+type Contravariant :: (* -> *) -> Constraint
+class Contravariant f where
+  contramap :: (a' -> a) -> f a -> f a'
+  (>$) :: b -> f b -> f a
+  {-# MINIMAL contramap #-}
+        -- Defined in ‘Data.Functor.Contravariant’
+instance Contravariant Predicate
+  -- Defined in ‘Data.Functor.Contravariant’
+instance Contravariant (Op a)
+  -- Defined in ‘Data.Functor.Contravariant’
+instance Contravariant Equivalence
+  -- Defined in ‘Data.Functor.Contravariant’
+instance Contravariant Comparison
+  -- Defined in ‘Data.Functor.Contravariant’
+```
+实现了Contravariant的类型类都是函数，例如
+```haskell
+ghci> :info Predicate
+type Predicate :: * -> *
+newtype Predicate a = Predicate {getPredicate :: a -> Bool}
+```
+以Predicate为例的话，contramap的意义就是：给定一个(a -> b)的函数和一个Predicate b，可以提到一个Predicate a。在这个Predicate a中的(a -> Bool)函数的实现是：先把(a -> b)函数应用于a，得到b，再把Predicate b应用于b得到Bool。
+
 
 对于类型T a是Covariant还是Contravariant，取决与a出现在正位置(positive position)还是负位置(negative position)。所有的类型都可以用**canonical representation**来表，对于三种基本的类型构造方式Either, (,)和(->)来说，它们的正负性分别是
 

@@ -108,9 +108,8 @@ ghci> :t 1 :# Just 2 :# HNil
 
     ```
 值得注意的是，HList与List有一个重要区别：在List里面[]、[1,2,3]、[4,5]都是[Int]类型，与长度无关；但是在HList中，[]、[True,Just 1]、[1,Maybe 2]的类型都不一样，HList的类型中包含了所有元素的类型，所以在实现Eq和Ord的时候需要写两条instance语句。由于[]和[True]属于不同的类型，所以不能执行(==)函数，下面的代码将无法编译:
-```haskell
+```
 ghci> HNil == (True :# HNil)
-
 <interactive>:78:10: error:
     • Couldn't match type: '[Bool]
                      with: '[]
@@ -122,12 +121,13 @@ ghci> HNil == (True :# HNil)
 ```
 
 对于Eq和Ord这类的class，需要写多条instance语句并不是很舒服，原因Eq和Ord这种Constraint只能约束一个类型，我们可以使用type family来实现一个对于[Type]的Constraint:
+
 ```haskell
 type family All (c :: Type -> Constraint) (ts :: [Type]) :: Constraint where
   All c '[] = ()
   All c (t ': ts) = (c t, All c ts)
-
 ```
+
 然后可以使用一条instance来分别实现Eq和Ord:
 ```haskell
 instance All Eq ts => Eq (HList ts) where

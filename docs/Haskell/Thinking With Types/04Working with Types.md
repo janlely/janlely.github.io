@@ -90,3 +90,4 @@ ghci> typeName @String
 type family AlwaysUnit a
   where AlwaysUnit a = ()
 ```
+AlwaysUnit是没有逆的，没有办法从(AlwaysUnit a)中得到a的类型。类似这样的类型的特点被称为Non-Injectivity。类似的hash算法也是没有逆的。
