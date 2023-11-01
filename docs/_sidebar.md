@@ -6,8 +6,10 @@
       - [03Variance](/Haskell/Thinking%20With%20Types/03Variance.md)
       - [04Working with Types](/Haskell/Thinking%20With%20Types/04Working%20with%20Types.md)
       - [05Constraints and GADTs](/Haskell/Thinking%20With%20Types/05Constraints%20and%20GADTs.md)
+      - [06Rank N Types](/Haskell/Thinking%20With%20Types/06Rank-N%20Types.md)
   - Linux
     - [iptables打通两个局域网](/Linux/iptables打通两个局域网.md)
+  - [_coverpage](/_coverpage.md)
   - 大数据
     - [OLTP vs OLAP](/大数据/OLTP%20vs%20OLAP.md)
     - [Row based vs Column based](/大数据/Row-based%20vs%20Column-based.md)
