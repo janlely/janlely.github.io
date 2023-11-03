@@ -7,6 +7,8 @@
       - [04Working with Types](/Haskell/Thinking%20With%20Types/04Working%20with%20Types.md)
       - [05Constraints and GADTs](/Haskell/Thinking%20With%20Types/05Constraints%20and%20GADTs.md)
       - [06Rank N Types](/Haskell/Thinking%20With%20Types/06Rank-N%20Types.md)
+      - [07Existential Types](/Haskell/Thinking%20With%20Types/07Existential%20Types.md)
+      - [08Roles](/Haskell/Thinking%20With%20Types/08Roles.md)
   - Linux
     - [iptables打通两个局域网](/Linux/iptables打通两个局域网.md)
   - [_coverpage](/_coverpage.md)
