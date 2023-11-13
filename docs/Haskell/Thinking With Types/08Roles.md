@@ -36,3 +36,10 @@ insert :: Ord k => k -> v -> Map k v -> Map k v
 在之前的例子中
 - `Reverse a`中的`a`的Role是Representational，意思就是`Coercible a b` => `Coercible (Reverse a) (Reverse b)`
 - `Map k v`中的`k`的Role是nomial，即只有`k1 ~ k2`才有`Coercible (Map k1 v) (Map k2 v)`
+
+另一个`role`是phantom，例如在`Proxy a`中的`a`是phantom。
+
+不强制指定的情况下，编译器也会自动推导`role`，三种`role`中，phantom最弱，nominal最强，把一个弱的role升级到强的role被称为`strengthening`。编译器推断role的过程大致是这样：
+- 假设所有的类型参数都是phantom
+- (->)类型构造器的两个参数都是representational，data constructors可以被视为(->)
+- (∼)的两个参数是nomial

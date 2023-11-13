@@ -9,11 +9,10 @@
       - [06Rank N Types](/Haskell/Thinking%20With%20Types/06Rank-N%20Types.md)
       - [07Existential Types](/Haskell/Thinking%20With%20Types/07Existential%20Types.md)
       - [08Roles](/Haskell/Thinking%20With%20Types/08Roles.md)
+      - [09Associated Type Families](/Haskell/Thinking%20With%20Types/09Associated%20Type%20Families.md)
   - Linux & MacOS
     - [iptables打通两个局域网](/Linux%20&%20MacOS/iptables打通两个局域网.md)
-    - mac下编辑
-      - etc
-        - [resolv.conf不生效](/Linux%20&%20MacOS/mac下编辑/etc/resolv.conf不生效.md)
+    - [mac下编辑resolv.conf不生效](/Linux%20&%20MacOS/mac下编辑resolv.conf不生效.md)
   - 大数据
     - [OLTP vs OLAP](/大数据/OLTP%20vs%20OLAP.md)
     - [Row based vs Column based](/大数据/Row-based%20vs%20Column-based.md)
