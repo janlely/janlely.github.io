@@ -43,7 +43,7 @@ data MapList dfb a = MapList (a -> dfb) [a]
 ```
 这里我之所以使用`dfb`而不使用`b`是为了强调它是一个去函数化的类型(defunctionalized b)，然后给这个`MapList`实现`Eval`:
 ```haskell
-instance Eval dfb b => Eval (MapList [dfb] a) [b] where
+instance Eval dfb b => Eval (MapList dfb a) [b] where
   eval (MapList f []) = []
   eval (MapList f (a:as)) = 
     eval (f a) : eval (MapList f as)
