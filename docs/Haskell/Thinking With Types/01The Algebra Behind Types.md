@@ -2,7 +2,7 @@
 __Sum Types__
 $$|Either\ a\ b|=|a| + |b|$$
 __Product Types__
-$$|(a,\ b)| = |a| + |b|$$
+$$|(a,\ b)| = |a| \times |b|$$
 __Function Types__
 $$|a\ \to \ b| = |b|^{|a|}$$
 举个例子：假设$|a|=2$、$|b|=3$，那么对于$f :: a \to b$类型来说，一共有如下$3^2$种可能:

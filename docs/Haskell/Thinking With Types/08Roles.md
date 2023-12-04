@@ -42,4 +42,4 @@ insert :: Ord k => k -> v -> Map k v -> Map k v
 不强制指定的情况下，编译器也会自动推导`role`，三种`role`中，phantom最弱，nominal最强，把一个弱的role升级到强的role被称为`strengthening`。编译器推断role的过程大致是这样：
 - 假设所有的类型参数都是phantom
 - (->)类型构造器的两个参数都是representational，data constructors可以被视为(->)
-- (∼)的两个参数是nomial
+- (∼)的两个参数是nomial, GADTs被视为(~)
