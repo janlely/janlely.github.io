@@ -18,3 +18,5 @@
     - [OLTP vs OLAP](/大数据/OLTP%20vs%20OLAP.md)
     - [Row based vs Column based](/大数据/Row-based%20vs%20Column-based.md)
     - [各种数据库](/大数据/各种数据库.md)
+  - 未分类
+    - [git分支策略解析](/未分类/git分支策略解析.md)
