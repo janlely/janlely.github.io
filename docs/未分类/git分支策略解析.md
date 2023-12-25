@@ -7,7 +7,7 @@ Git Flow, Github Flow, Gitlab Flow
 * 多条临时分支: feature, release-xxx, hotfix等
 ### Tips
 * feature合并到develop之后同时创建release-xx分支
-* 在release-xx分支上进行bug修复，修复完成封版时同时合并到develop和master，在封版前不能合并回develop分支
+* 在release-xx分支上进行bug修复，修复完成封版时同时合并到develop和master
 * release-xx分支用于dev和test环境部署，master分支用于pre,producte分支部署
 
 ### 总结
@@ -39,26 +39,42 @@ Git Flow, Github Flow, Gitlab Flow
 * 一条主分支master
 * 可以存在多条环境分支
 * 可以存在多条发布分支
+* 适合自动化与CI/CD
 ## Tips
-* master为所有环境分支以及发布分支上游，所有的环境分支和发布分支只能merge，不能自己产生commit
-* 从master上拉feature分支，开发完成之后合并到master，master合并到test，test合并到product
-* hotfix场景，从product拉分支，修复完成合并到product，生成验证没问题之后合并回到master
+* 基于环境的分支管理策略
+  * 每个环境对应一个分支，遵循upstream first原则，代码不会产生冲突，由CI/CD自动完成合并。
+  * 没有hotfix流程
+  * 发布分支没有隔离，并行开发不友好
+* 基于版本的分支管理策略
+  * 每个版本对应一个分支，与git flow相似，对并行开发友好
+  * hotfix可以基于版本分支创建，修复完成之后再合并到对应版本分支与master分支
+* 与github flow类似，master分支需要保证是一个可发布的版本，feature分支在合并到master之前最好经过了自动化测试
+
+## 总结
+* 一条主分支，主分支要保证可部署
 
 ## 场景与解决方案
 
 ### 多feature并行开发
-|策略|方案|优缺点|
-|--|--|--|
-|git flow|- 从develop拉多条feature分支<br> - 每个feature开发完成之后合并到develop并同时创建release分支<br> - release分支上进行测试与bug修复，完成后合并到develop和master|优点:并行开发，也可以并行测试|
-|gitlab flow|- 从master拉feature分支<br> - 开发完成之后合并回到master分支，同时删除该feature分支<br> - 前一个feature上线之后打tag，才能将后一个feature合并到master|缺点：feature可以并行开发，但是测试和发布必须串行|
+|策略|方案|
+|--|--|
+|git flow|- 从develop拉多条feature分支<br> - 每个feature开发完成之后合并到develop并同时创建release分支<br> - release分支上进行测试与bug修复，完成后合并到develop和master|
+|gitlab flow(基于版本)|- 从master拉feature分支<br> - 开发完成之后经过自动化测试流程，最后合并到master<br> - 从master拉release分支进行后续的测试与生产发布<br> - 在release分支上修复问题，合并回master分支|
 
 
 ### hotfix
 |策略|方案|
 |--|--|
 |git flow|- 从master拉hotfix分支<br> - 修复问题并合并回master分支进行生产环境验证<br> - 最后合并回develop分支|
-|gitlab flow|- 从master分支的指定tag拉新hotfix<br> - 修复完成之后使用hotfix分支在各环境进行测试<br> - 测试完成之后把hotfix合并到master分支和product分支|
+|gitlab flow(基于版本)|- 从release上拉取hotfix，修复完成之后合并到release分支和master分支|
 
 ## 案例
 ![](../_media/ecflow.jpg)
 ![](../_media/someflow.png)
+
+
+## CSND分支管理策略建议
+建议git flow
+* 可操作性强，有明确的操作方法
+* 并行开发支持性好
+* hotfix支持性好
