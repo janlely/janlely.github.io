@@ -12,9 +12,7 @@ Git Flow, Github Flow, Gitlab Flow
 
 ### 总结
 * 综合考虑了feature和hotfix
-* 适合一段时间一个版本的项目
-* 两条主分支，流程复杂，管理难度大
-* develop分支和release-xx分支上都要提交，管理复杂度高
+* 每个feature独立release分支，适合并行开发
 
 
 ## GitHub Flow
