@@ -48,7 +48,7 @@ instance Eval dfb b => Eval (MapList dfb a) [b] where
   eval (MapList f (a:as)) = 
     eval (f a) : eval (MapList f as)
 ```
-之拟要添加`Eval dfb b`是因为`dfb`是一个去函数化的类型，所以`f a`的结果需要使用`eval`函数来求值。
+之所以要添加`Eval dfb b`是因为`dfb`是一个去函数化的类型，所以`f a`的结果需要使用`eval`函数来求值。
 
 看一下效果:
 ```bash

@@ -11,7 +11,7 @@ printf("hello %d", "world");
 我们希望把`"hello %s, %d"`这一格式化的字符串表达成一个这样的Type:
 
 <center>"hello " :<< String :<< ", " :<< Int</center>
-(:<<)是一个类型构造函数。然后，我们希望可以这个Type转换成一个函数:
+(:<<)是一个类型构造函数。然后，我们希望把这个Type转换成一个函数:
 
 <center>String -> Int -> String</center>
 有了这个函数，编译器就可以做类型检查了，`"hello %s, %d"`就只能接收一个`String`和一个`Int`。
