@@ -48,5 +48,5 @@ HasServer中使用了关联类型`ServerT`，在类型类中可以定义与类�
     main :: IO ()
     main = run 8080 $ serveWithContext (Proxy :: Proxy CombinedAPI) context combinedServer
     ```
-* 使用(:.)函数连接所要提供的上下文，Context中的值的顺序不重要，Servant会自动选择正确的上下文给到api的处理逻辑。
+* 使用(:.)函数连接所要提供的上下文，Context中的类型的顺序不重要，Servant会自动选择正确的上下文给到api的处理逻辑。
 * 使用`serveWithContext`函数来创建Application

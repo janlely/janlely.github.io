@@ -76,3 +76,12 @@ Git Flow, Github Flow, Gitlab Flow
 * 可操作性强，有明确的操作方法
 * 并行开发支持性好
 * hotfix支持性好
+
+### 分支命名规范
+* 需求开发分支: feature-*
+* 主线开发分支: develop
+* 测试分支: release-[0-9].[0-9]-yyyyMMdd
+* 发布分支: main
+
+### 开发流程
+![](../_media/git分支流程.png)
