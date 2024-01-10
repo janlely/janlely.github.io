@@ -89,7 +89,7 @@ Git Flow, Github Flow, Gitlab Flow
 
 ### 环境与分支
 
-<div style="display: flex; justify-content: center;">
+<div style="margin-left: auto; margin-right: auto; width: 30%">
 
 |环境|分支|
 |--|--|
@@ -99,6 +99,8 @@ Git Flow, Github Flow, Gitlab Flow
 |prod|main|
 
 </div>
+
+            
 
 ### 分支合并PR
 * feature -> develop

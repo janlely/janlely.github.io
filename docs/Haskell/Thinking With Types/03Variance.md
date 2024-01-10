@@ -70,7 +70,7 @@ newtype Predicate a = Predicate {getPredicate :: a -> Bool}
 
 对于类型T a是Covariant还是Contravariant，取决与a出现在正位置(positive position)还是负位置(negative position)。所有的类型都可以用**canonical representation**来表，对于三种基本的类型构造方式Either, (,)和(->)来说，它们的正负性分别是
 
-<div style="display: flex; justify-content: center;">
+<div style="margin-left: auto; margin-right: auto; width: 30%">
 
 |Type|a|b|
 |--|--|--|
