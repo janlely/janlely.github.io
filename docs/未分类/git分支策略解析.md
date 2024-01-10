@@ -85,3 +85,22 @@ Git Flow, Github Flow, Gitlab Flow
 
 ### 开发流程
 ![](../_media/git分支流程.png)
+
+
+### 环境与分支
+
+<div style="display: flex; justify-content: center;">
+
+｜环境|分支|
+|--|--|
+|dev|develop,feature|
+|test|release-xx|
+|uat|release-xx|
+|prod|main|
+
+</div>
+
+### 分支合并PR
+* feature -> develop
+* release -> develop
+* release -> main
