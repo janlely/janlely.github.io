@@ -91,7 +91,7 @@ Git Flow, Github Flow, Gitlab Flow
 
 <div style="display: flex; justify-content: center;">
 
-｜环境|分支|
+|环境|分支|
 |--|--|
 |dev|develop,feature|
 |test|release-xx|
