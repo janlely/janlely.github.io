@@ -14,6 +14,8 @@
     - servant源码分析
       - [01从hello world开始](/Haskell/servant源码分析/01从hello%20world开始.md)
       - [02 HasServer](/Haskell/servant源码分析/02%20HasServer.md)
+      - [03 Server, ServerT, Handler](/Haskell/servant源码分析/03%20Server,%20ServerT,%20Handler.md)
+      - [04 API type](/Haskell/servant源码分析/04%20API%20type.md)
   - Linux & MacOS
     - [iptables打通两个局域网](/Linux%20&%20MacOS/iptables打通两个局域网.md)
     - [mac下编辑resolv.conf不生效](/Linux%20&%20MacOS/mac下编辑resolv.conf不生效.md)
