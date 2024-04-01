@@ -95,7 +95,7 @@ Git Flow, Github Flow, Gitlab Flow
 |--|--|
 |dev|develop,feature|
 |test|release-xx|
-|uat|release-xx|
+|uat|release-xx,hotfix|
 |prod|main|
 
 </div>
@@ -106,3 +106,4 @@ Git Flow, Github Flow, Gitlab Flow
 * feature -> develop
 * release -> develop
 * release -> main
+* bugfix -> release

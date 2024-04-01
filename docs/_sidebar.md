@@ -25,6 +25,13 @@
     - [OLTP vs OLAP](/大数据/OLTP%20vs%20OLAP.md)
     - [Row based vs Column based](/大数据/Row-based%20vs%20Column-based.md)
     - [各种数据库](/大数据/各种数据库.md)
+  - 大模型
+    - [相关文章](/大模型/相关文章.md)
+  - 数据分析
+    - [本体与对象](/数据分析/本体与对象.md)
   - 未分类
     - [git分支策略解析](/未分类/git分支策略解析.md)
     - [openssl生成https证书](/未分类/openssl生成https证书.md)
+  - 机器学习
+    - [机器学习问题分类](/机器学习/机器学习问题分类.md)
+    - [目标识别学习](/机器学习/目标识别学习.md)
