@@ -21,6 +21,7 @@
     - [mac下编辑resolv.conf不生效](/Linux%20&%20MacOS/mac下编辑resolv.conf不生效.md)
   - Web
     - [统一登录权限管理实现](/Web/统一登录权限管理实现.md)
+    - [跨域](/Web/跨域.md)
   - 大数据
     - [OLTP vs OLAP](/大数据/OLTP%20vs%20OLAP.md)
     - [Row based vs Column based](/大数据/Row-based%20vs%20Column-based.md)
@@ -28,6 +29,7 @@
   - 大模型
     - [相关文章](/大模型/相关文章.md)
   - 数据分析
+    - [数据建模、本体与数据对象](/数据分析/数据建模、本体与数据对象.md)
     - [本体与对象](/数据分析/本体与对象.md)
   - 未分类
     - [git分支策略解析](/未分类/git分支策略解析.md)
