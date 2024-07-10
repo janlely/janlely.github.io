@@ -1,4 +1,6 @@
   - Haskell
+    - Arrow
+      - [Hangman](/Haskell/Arrow/Hangman.md)
     - [Haskell类型编程的优势](/Haskell/Haskell类型编程的优势.md)
     - Thinking With Types
       - [01The Algebra Behind Types](/Haskell/Thinking%20With%20Types/01The%20Algebra%20Behind%20Types.md)
