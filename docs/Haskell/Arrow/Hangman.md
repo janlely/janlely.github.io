@@ -192,3 +192,135 @@ main = do
 * `concatMap snd . takeWhile fst`获取游戏进行过程中的每一步输出，并把描述游戏过程的字符串拼接成列表
 * `("Welcome to Arrow Hangman":)`拼接上游戏开始的输出
 * `unlines`把列表用换行符拼接，以便在控制台输出
+
+最后附上完整的代码:
+```haskell
+{-# LANGUAGE TupleSections #-}
+{-# LANGUAGE Arrows #-}
+{-# LANGUAGE LambdaCase #-}
+
+
+import Control.Arrow ((>>^), (^>>), returnA, Arrow((&&&), arr, first), ArrowChoice(..))
+import qualified Control.Category as Cat
+import Data.Traversable (mapAccumL)
+import System.Random (Random, StdGen, randomR, getStdGen)
+import Control.Monad (mplus)
+import Data.Maybe (fromJust, listToMaybe)
+
+
+newtype Circuit a b = Circuit { unCircuit :: a -> (Circuit a b, b) }
+
+instance Cat.Category Circuit where
+    id = Circuit (Cat.id,)
+    (.) = dot
+        where (Circuit cir2) `dot` (Circuit cir1) = Circuit $ \a ->
+                let (cir1', b) = cir1 a
+                    (cir2', c) = cir2 b
+                 in (cir2' `dot` cir1', c)
+
+instance Arrow Circuit where
+    arr f = Circuit $ \a -> (arr f, f a)
+    first (Circuit cir) = Circuit $ \(a, c) -> 
+                            let (cir', b) = cir a
+                             in (first cir', (b, c))
+
+runCircuit :: Circuit a b -> [a] -> [b]
+runCircuit cir = snd . mapAccumL unCircuit cir
+
+
+accum :: acc -> (a -> acc -> (b, acc)) -> Circuit a b
+accum acc f = Circuit $ \a -> let (b, acc') = f a acc
+                               in (accum acc' f, b)
+
+                            
+accum' :: b -> (a -> b -> b) -> Circuit a b
+accum' b f = accum b $ \a acc -> let b' = f a acc in (b', b')
+
+total :: Num a => Circuit a a
+total = accum' 0 (+)
+
+data State = Won | Lost | Continue Int deriving Show
+
+-- hangman :: Circuit String State 
+-- hangman = proc input -> do
+
+
+dictionary :: [String]
+dictionary = ["hello", "world", "haskell", "functional", "programming"]
+
+generator :: Random a => (a, a) -> StdGen -> Circuit () a
+generator rng g = accum g $ \_ acc -> randomR rng acc
+
+pickWord :: StdGen -> Circuit () String
+pickWord g = proc () -> do
+    idx <- generator (0, length dictionary - 1) g -< ()
+    returnA -< dictionary !! idx
+
+oneShot :: Circuit () Bool
+oneShot = accum True $ \_ acc -> (acc, False)
+
+instance ArrowChoice Circuit where
+    left orig@(Circuit cir) = Circuit $ \case 
+        Left b -> let (cir', c) = cir b
+                    in (left cir', Left c)
+        Right d -> (left orig, Right d)
+
+getWord :: StdGen -> Circuit () String
+getWord g = proc () -> do
+    firstTime <- oneShot -< ()
+    let input = if firstTime then Left () else Right ()
+    mPicked <- (pickWord g >>^ Just) ||| arr (const Nothing) -< input
+    mWord <- accum' Nothing mplus -< mPicked
+    returnA -< fromJust mWord
+
+delayEcho :: a -> Circuit a a
+delayEcho acc = accum acc (flip (,))
+
+
+attempts :: Int
+attempts = 5
+
+livesLeft :: Int -> String
+livesLeft hung = "Lives: ["
+              ++ replicate (attempts - hung) '#'
+              ++ replicate hung ' '
+              ++ "]"
+
+hangman :: StdGen -> Circuit String (Bool, [String])
+hangman g = proc input -> do
+    word <- getWord g -< ()
+    let letter = listToMaybe input 
+    (guessed, failureCount) <- updateGuess -< (word, letter)
+    hung <- total -< failureCount
+    end <- delayEcho True -< not (word == guessed || hung >= attempts)
+    let result | word == guessed = [guessed, "You won!"]
+               | hung >= attempts = [guessed, livesLeft hung, "You died!"]
+               | otherwise = [guessed, livesLeft hung]
+    returnA -< (end, result)
+
+updateGuess :: Circuit (String, Maybe Char) (String, Int)
+updateGuess = accum (repeat '_') $ \(word, letter) guess -> 
+    case letter of
+        Just l -> let (guess', changed) = unzip $ runCircuit (updateOnHit l) $ zip word guess
+                   in ((guess', if or changed then 0 else 1), guess')
+        Nothing -> let guess' = take (length word) guess
+                    in ((guess', 0), guess')
+  where updateOnHit :: Char -> Circuit (Char, Char) (Char, Bool)
+        updateOnHit l = accum False $ \(a, b) acc -> if acc
+                                                       then ((b, False), acc)
+                                                       else if a == l && b /= l
+                                                              then ((a, True),  True)
+                                                              else ((b, False), False)
+
+
+
+main :: IO ()
+main = do
+    g <- getStdGen
+    interact $ unlines                      -- Concatenate lines out output
+        . ("Welcome to Arrow Hangman":)     -- Prepend a greeting to the output
+        . concatMap snd . takeWhile fst  -- Take the [String]s as long as the first element of the tuples is True
+        . runCircuit (hangman g)          -- Process the input lazily
+        . ("":)                             -- Act as if the user pressed ENTER once at the start
+        . lines                             -- Split input into lines
+```
