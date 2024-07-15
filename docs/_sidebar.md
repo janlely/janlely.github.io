@@ -2,8 +2,9 @@
     - Arrow
       - Circuit
         - [01Circuit](/Haskell/Arrow/Circuit/01Circuit.md)
-        - [02Mean](/Haskell/Arrow/Circuit/02Mean.md)
-        - [03Hangman](/Haskell/Arrow/Circuit/03Hangman.md)
+        - [02Loop](/Haskell/Arrow/Circuit/02Loop.md)
+        - [03Mean](/Haskell/Arrow/Circuit/03Mean.md)
+        - [04Hangman](/Haskell/Arrow/Circuit/04Hangman.md)
     - [Haskell类型编程的优势](/Haskell/Haskell类型编程的优势.md)
     - Thinking With Types
       - [01The Algebra Behind Types](/Haskell/Thinking%20With%20Types/01The%20Algebra%20Behind%20Types.md)
