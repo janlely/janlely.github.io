@@ -7,7 +7,7 @@ instance ArrowLoop Circuit where
         let (cir', (c,d)) = cir (b,d)
         in  (loop cir', c)
 ```
-这里使用了`tying the knot`来创建循环结构，`cir (b,d)`中的`d`引用自己它自己的输出中的`(c,d)`。
+这里使用了`tying the knot`来创建循环结构，`cir (b,d)`中的`d`引用自它自己的输出中的`(c,d)`。
 
 函数的输入引用自己的输出？这不就死循环了吗？
 
